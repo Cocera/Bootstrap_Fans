@@ -1,5 +1,7 @@
 const name = document.getElementById("userName");
 const email = document.getElementById("userMail");
+const pass1 = document.getElementById("inputPass")
+const pass2 = document.getElementById("inputPass2")
 const btn = document.getElementById("btnSend");
 const cardFans = document.getElementById("cardFans")
 
