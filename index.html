@@ -34,167 +34,107 @@
           </nav>
     </header>
     
-    <!-- <div class="container">
-        <div class="col-6">
-          <div class="overflow-auto text-center">
-        <p>¿Qué es Bootstrap?¿Para qué sirve?
-        Bootstrap es un framework de CSS y Javascript diseñado para la creación de interfaces. En otras palabras, es una biblioteca de herramientas de interfaz, muy potente y repleto de funciones. Permite a los desarrolladores construir páginas web de formato responsive, de manera eficaz y rápida, desde el prototipo hasta la producción. 
-        ¿Por qué usar Bootstrap?
-        Bootstrap permite que los desarrolladores web ahorren tiempo gracias a que aprovechan el código reutilizable para elementos como: barras de navegación, menús, etiquetas, alertas, listas y complementos de JavaScript, entre otros. 
-        Combina los lenguajes de programación CSS y JavaScript para estilizar los elementos de una página HTML. Por eso, ofrece muchas más funcionalidades que, simplemente, cambiar la forma y el color de botones y enlaces. 
-        Características de Bootstrap.
-        Ofrece una gran interactividad en la página, gracias a una serie de componentes que facilitan la interacción con el usuario, como menús de navegación, barras de progreso y controles de página. 
-        Diseño responsive. El objetivo principal de este framework es construir sitios web responsive para dispositivos móviles. De una forma muy sencilla y organizada, permite diseñar páginas especialmente adaptadas para funcionar en smartphones, tablets y desktop.  
-        Biblioteca de componentes. Otra interesante función de Bootstrap es la cantidad de componentes que ofrece para mejorar la comunicación con el usuario: diferentes tipos de alerta; carrusel de diapositivas para facilitar la visualización de imágenes; y una barra de navegación que permite múltiples configuraciones. Fuente
-        
-        Ventajas y desventajas de usar Bootstrap.
-        Ventajas:
-        Bootstrap flexibility is well known as it's one of the more popular platforms and includes CSS, HTML, and JS frameworks for web design. Es una plataforma muy flexible y fiable
-        Los diseños web son completamente personalizables
-        Es fácil prevenir la repetición entre proyectos
-        Responsive design that can be used to adapt screen sizes and choose what shows and what doesn't on any given device Los diseños responsive pueden ser usados para adaptarse a todo tipo de pantallas, y además, brindan la posibilidad de decidir que se muestra y que no en cada dispositivo.
-        Permite mantener la consistencia entre proyectos al trabajar con múltiples equipos desarrolladores.
-        Veloz diseño de prototipos.
-        Los diseños se trabajan con armonía con interfaces preexistentes.
-        Fácil de trabajar e integrar.
-        
-        
-        Desventajas:
-        Se recomienda trabajar con Bootstrap desde el inicio de un proyecto, ya que si quieres incluir el framework en un trabajo ya iniciado algunos estilos podrían “romperse” y se tendría que ajustar a como se tenía en un principio, y eso puede ser un poco tedioso y molesto.
-        Es complicado cambiar de versión si has realizado modificaciones profundas.
-        No es ligero, y además, para algunas funcionalidades, será necesario tener que usar Javascript y jQuery.
-        Debes adaptar tu diseño a un grid de 12 columnas, que se modifican según el dispositivo. Aquí empiezan los problemas, Bootstrap por defecto trae anchos, márgenes y altos de línea, y realiza cambios específicos.
-        
-        Cómo instalar o implementar Bootstrap en mi proyecto.
-        
-        Cómo instalar o implementar Bootstrap en mi proyecto.
-        Bootstrap se puede instalar de distintas formas. 
-        Una forma sencilla de hacerlo es visitar la página oficial de Bootstrap y descargar el paquete. Link
-        De esta manera, puedes tener los archivos de este framework en tu servidor.
-        El paquete de descarga lo puedes descomprimir en la raíz de tu proyecto o en el directorio que tu quieras.
-        Con la última actualización, en Bootstrap todos los elementos y diseños son mobile-first desde el inicio.
-        Enlazando Bootstrap en nuestro archivo CSS o JS y enlazando estos de la manera correcta, CSS en head y JS en script. 
-        
-        ¿Se puede implementar responsive con Bootstrap? Si es así, ¿podrías explicar cómo funciona y poner un ejemplo?
-        Bootstrap cuenta con un sistema de rejilla fluida de mobile-first que escala apropiadamente hasta 12 columnas mientras que el tamaño de la pantalla se incrementa. Incluye clases predefinidas para opciones de diseño sencillas, así como potentes mezclas para generar diseños más semánticos
-        ¿Que es un componente de Bootstrap? Pon un ejemplo.
-        Bootstrap 4 ofrece una variedad de componentes personalizables y reutilizables que facilitan y aceleran el desarrollo. Estos componentes se basan en gran medida en la nomenclatura de modificadores de clases, es decir, la clase base tiene muchas propiedades compartidas en conjunto, mientras que la clase de modificador tiene un grupo de estilos individuales. Por ejemplo, .btn es una clase base y .btn-primary o .btn-success es una clase de modificador. Los componentes de Bootstrap abarcan desde alertas, botones, insignias y tarjetas hasta varios otros componentes.
-        
-        ¿Hay muchos tipos de diseños en Bootstrap? Si los hay, explícalos.
-        Los contenedores son el elemento de diseño más básico en Bootstrap y se necesitan al usar el sistema de cuadrícula predeterminado. Hay dos diseños principales para Bootstrap que son Diseño fluido y Diseño fijo. 
-        
-        Diseño fluido : utiliza la clase bootstrap .container-fluid para el diseño. Este diseño utiliza valores proporcionales, como unidades de medida para un bloque de contenido, imágenes o cualquier otro elemento. Se utiliza para crear un elemento que sea 100 % más ancho y cubra todos los anchos de la pantalla. El diseño fluido cambia de tamaño continuamente a medida que cambia el ancho de su navegador en cualquier cantidad, sin dejar espacio vacío adicional en los lados. Por lo tanto, se llama «diseño fluido».
-        Diseño fijo : utiliza la clase bootstrap .container para el diseño. El diseño fijo tiene valores de ancho de píxel específicos que cambian su valor de ancho con la ayuda de consultas de medios. Proporciona un contenedor receptivo de ancho fijo. El diseño fijo cambia de tamaño en fragmentos en varios anchos determinados a medida que se especifican los valores de píxeles. 
-        
-        ¿Cuáles son los diferentes tipos de botones en Bootstrap? Pon ejemplos.
-        Existen dos tipos de botones, el base button y el group button, ambos con variedades de estilo en sus distintas clases. El button base es el boton individual y el grupal es una agrupación de distintos botones unidos visualmente.
-        Boton base
-        Group botton
-        
-        ¿Qué es un Carousel de Bootstrap? Pon un ejemplo.
-        El Carousel es una presentación de diapositivas para recorrer una serie de contenido, creado con transformaciones CSS 3D y un poco de JavaScript. Funciona con una serie de imágenes, texto o marcas personalizadas. También incluye soporte para controles e indicadores anteriores/siguientes.
-        Ejemplo
-        ¿?¿?
-        ¿Qué es un spinner de Bootstrap? Pon un ejemplo.
-        Los “spinners” de Bootstrap se pueden usar para mostrar el estado de carga en tus proyectos. Están construidos solo con HTML y CSS, lo que significa que no necesitas JavaScript para crearlos, pero si para alternar su visibilidad.
-        Ejemplo:
-        ¿?¿?¿
-        ¿Qué es un navBar de Bootstrap? Pon un ejemplo.
-        La navBar de Bootstrap es una barra de navegación adaptable y fluida de forma predeterminada, lo que significa que se amplía o reduce en función de la anchura del viewport.
-        Ejemplo:
-        ¿?¿?¿
-        ¿Qué es un modal de Bootstrap? Pon un ejemplo.
-        Un cuadro modal es una ventana que aparece superpuesta a toda la página actual. Se utiliza para agregar cuadros de diálogo a tu sitio web, ya sea para lightboxes, notificaciones al usuario o contenido completamente personalizado.
-        
-        Para cerrarla podemos presionar la "x", disponer un botón de cerrado o presionar en cualquier parte fuera del diálogo. Solo se puede tener una ventana modal a la vez, eso significa que desde una ventana modal no se puede disparar otra.
-        Los cuadros de diálogo que implementa Bootstrap 4 requieren de las librerías de Javascript, por lo tanto no debemos olvidar de importarlas.
-        
-        
-        
-        Ejemplo modal
-        ?¿?¿?¿?
-        
-        
-        ¿Existen inputs para subir archivos en Bootstrap? Pon un ejemplo.
-        
-        Sí, Bootstrap proporciona clases y componentes que puedes usar para crear formularios de carga de archivos (inputs para subir archivos) de manera fácil y con estilo. Uno de los componentes que puedes utilizar es el elemento "&lt;input type="file>" junto con algunas clases de Bootstrap para personalizar su apariencia.
-        
-        Ejemplo
-        ¿?¿?¿?¿
-        
-        
-        ¿Qué es un plugin scrollspy en Bootstrap? Pon un ejemplo.
-        Scrollspy en Bootstrap es una característica que permite seguir automáticamente la posición del usuario en una página web a medida que se desplaza hacia abajo o hacia arriba.
-        ¿Cómo funciona Scrollspy?
-        Scrollspy tiene algunos requisitos para funcionar correctamente:
-        
-        Debe usarse en un componente de navegación o list group de Bootstrap.
-        Scrollspy requiere position: relative; en el elemento que estás espiando, generalmente el &lt;body>.
-        Se requieren enlaces (&lt;a>) y deben apuntar a un elemento con ese id.
-        Cuando se implemente con éxito, tu grupo de navegación o lista se actualizará en consecuencia, moviendo la clase .active de un elemento al siguiente en función de tus objetivos asociados.
-        
-        Ejemplo:
-        ¿?¿?¿
-        
-      </p>
-    </div>
-        </div>
-    </div> -->
    
     <div class="row">
       <div class="col-4">
         <div id="list-example" class="list-group">
-          <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-          <!-- Agregar 15 elementos más -->
-          <a class="list-group-item list-group-item-action" href="#list-item-5">Item 5</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-6">Item 6</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-7">Item 7</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-8">Item 8</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-9">Item 9</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-10">Item 10</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-11">Item 11</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-12">Item 12</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-13">Item 13</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-14">Item 14</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-15">Item 15</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-1">Qué es Bootstrap y para qué sirve</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-2">Por qué usar Bootstrap</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-3">Características</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-4">Ventajas y desventajas</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-5">Cómo instalar</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-6">Sistema Mobile-first</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-7">Qué es un componente?</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-8">Tipos de diseños</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-9">Botones</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-10">Carousel</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-11">Spinner</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-12">NavBar</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-13">Modal</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-14">Inputs</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-15">Plugin Scrollspy</a>
         </div>
       </div>
       <div class="col-8">
         <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-          <h4 id="list-item-1">Item 1</h4>
-          <p>...</p>
-          <h4 id="list-item-2">Item 2</h4>
-          <p>...</p>
-          <h4 id="list-item-3">Item 3</h4>
-          <p>...</p>
-          <h4 id="list-item-4">Item 4</h4>
-          <p>...</p>
-          <!-- Agregar contenido para los elementos adicionales si es necesario -->
-          <h4 id="list-item-5">Item 5</h4>
-          <p>...</p>
-          <h4 id="list-item-6">Item 6</h4>
-          <p>...</p>
-          <h4 id="list-item-7">Item 7</h4>
-          <p>...</p>
-          <h4 id="list-item-8">Item 8</h4>
-          <p>...</p>
-          <h4 id="list-item-9">Item 9</h4>
-          <p>...</p>
-          <h4 id="list-item-10">Item 10</h4>
-          <p>...</p>
-          <h4 id="list-item-11">Item 11</h4>
-          <p>...</p>
-          <h4 id="list-item-12">Item 12</h4>
-          <p>...</p>
-          <h4 id="list-item-13">Item 13</h4>
-          <p>...</p>
-          <h4 id="list-item-14">Item 14</h4>
-          <p>...</p>
-          <h4 id="list-item-15">Item 15</h4>
-          <p>...</p>
+          <h4 id="list-item-1">Qué es Bootstrap y para qué sirve</h4>
+          <p>Bootstrap es un framework de CSS y Javascript diseñado para la creación de interfaces. En otras palabras, es una biblioteca de herramientas de interfaz, muy potente y repleto de funciones. Permite a los desarrolladores construir páginas web de formato responsive, de manera eficaz y rápida, desde el prototipo hasta la producción.</p>
+          <h4 id="list-item-2">Por qué usar Bootstrap</h4>
+          <p>Bootstrap permite que los desarrolladores web ahorren tiempo gracias a que aprovechan el código reutilizable para elementos como: barras de navegación, menús, etiquetas, alertas, listas y complementos de JavaScript, entre otros. 
+            Combina los lenguajes de programación CSS y JavaScript para estilizar los elementos de una página HTML. Por eso, ofrece muchas más funcionalidades que, simplemente, cambiar la forma y el color de botones y enlaces. </p>
+          <h4 id="list-item-3">Características</h4>
+         <ul>
+            <li>Ofrece una gran interactividad en la página, gracias a una serie de componentes que facilitan la interacción con el usuario, como menús de navegación, barras de progreso y controles de página.</li>
+            <li>Diseño responsive. El objetivo principal de este framework es construir sitios web responsive para dispositivos móviles. De una forma muy sencilla y organizada, permite diseñar páginas especialmente adaptadas para funcionar en smartphones, tablets y desktop.</li>
+            <li>Biblioteca de componentes. Otra interesante función de Bootstrap es la cantidad de componentes que ofrece para mejorar la comunicación con el usuario: diferentes tipos de alerta; carrusel de diapositivas para facilitar la visualización de imágenes; y una barra de navegación que permite múltiples configuraciones.</li>
+            </ul>
+          <h4 id="list-item-4">Ventajas y desventajas</h4>
+          <ul>
+            <p>Ventajas:</p>
+            <li>Es una plataforma muy flexible y fiable</li>
+            <li>Los diseños web son completamente personalizables</li>
+            <li>Es fácil prevenir la repetición entre proyectos</li>
+            <li>Los diseños responsive pueden ser usados para adaptarse a todo tipo de pantallas, y además, brindan la posibilidad de decidir que se muestra y que no en cada dispositivo.</li>
+            <li>Permite mantener la consistencia entre proyectos al trabajar con múltiples equipos desarrolladores.</li>
+            <li>Veloz diseño de prototipos.</li>
+            <li> Los diseños se trabajan con armonía con interfaces preexistentes.</li>
+            <li>Fácil de trabajar e integrar.</li>
+          </ul>
+            <p>Desventajas:</p>
+            <ul>
+              <li>Se recomienda trabajar con Bootstrap desde el inicio de un proyecto, ya que si quieres incluir el framework en un trabajo ya iniciado algunos estilos podrían “romperse” y se tendría que ajustar a como se tenía en un principio, y eso puede ser un poco tedioso y molesto.</li>
+              <li> Es complicado cambiar de versión si has realizado modificaciones profundas.</li>
+              <li>Dificultad en cuanto a la edición de estilo de los componentes, ofrece poca flexibilidad en las hojas de estilo.</li>
+              <li> No es ligero, y además, para algunas funcionalidades, será necesario tener que usar Javascript y jQuery.</li>
+              <li>Debes adaptar tu diseño a un grid de 12 columnas, que se modifican según el dispositivo. Aquí empiezan los problemas, Bootstrap por defecto trae anchos, márgenes y altos de línea, y realiza cambios específicos.</li>
+
+            </ul>
+          <h4 id="list-item-5">Cómo instalar</h4>
+          <p>Cómo instalar o implementar Bootstrap en mi proyecto.</p>
+          <p>Bootstrap se puede instalar de distintas formas:</p>
+          <ul>
+            <li>Una forma sencilla de hacerlo es visitar la página oficial de Bootstrap y descargar el paquete. De esta manera, puedes tener los archivos de este framework en tu servidor. El paquete de descarga lo puedes descomprimir en la raíz de tu proyecto o en el directorio que tu quieras.
+            Con la última actualización, en Bootstrap todos los elementos y diseños son mobile-first desde el inicio.
+            </li>
+            <li>Enlazando Bootstrap en nuestro archivo CSS o JS y enlazando estos de la manera correcta, CSS en head y JS en script. </li>
+          </ul>
+          <h4 id="list-item-6">Sistema Mobile-first</h4>
+          <p>Bootstrap cuenta con un sistema de rejilla fluida de mobile-first que escala apropiadamente hasta 12 columnas mientras que el tamaño de la pantalla se incrementa. Incluye clases predefinidas para opciones de diseño sencillas, así como potentes mezclas para generar diseños más semánticos</p>
+          <h4 id="list-item-7">Qué es un componente?</h4>
+          <p>Bootstrap ofrece una variedad de componentes personalizables y reutilizables que facilitan y aceleran el desarrollo. Estos componentes se basan en gran medida en la nomenclatura de modificadores de clases, es decir, la clase base tiene muchas propiedades compartidas en conjunto, mientras que la clase de modificador tiene un grupo de estilos individuales. Por ejemplo, .btn es una clase base y .btn-primary o .btn-success es una clase de modificador. Los componentes de Bootstrap abarcan desde alertas, botones, insignias y tarjetas hasta varios otros componentes.</p>
+          <h4 id="list-item-8">Tipos de diseños</h4>
+          <p>Los contenedores son el elemento de diseño más básico en Bootstrap y se necesitan al usar el sistema de cuadrícula predeterminado. Hay dos diseños principales para Bootstrap que son Diseño fluido y Diseño fijo.</p>
+          <ul>
+            <li>Diseño fluido : utiliza la clase bootstrap .container-fluid para el diseño. Este diseño utiliza valores proporcionales, como unidades de medida para un bloque de contenido, imágenes o cualquier otro elemento. Se utiliza para crear un elemento que sea 100 % más ancho y cubra todos los anchos de la pantalla. El diseño fluido cambia de tamaño continuamente a medida que cambia el ancho de su navegador en cualquier cantidad, sin dejar espacio vacío adicional en los lados. Por lo tanto, se llama «diseño fluido».</li>
+            <li>Diseño fijo : utiliza la clase bootstrap .container para el diseño. El diseño fijo tiene valores de ancho de píxel específicos que cambian su valor de ancho con la ayuda de consultas de medios. Proporciona un contenedor receptivo de ancho fijo. El diseño fijo cambia de tamaño en fragmentos en varios anchos determinados a medida que se especifican los valores de píxeles. </li>
+          </ul>
+          <h4 id="list-item-9">Botones</h4>
+          <p>Existen dos tipos de botones, el base button y el group button, ambos con variedades de estilo en sus distintas clases. El button base es el boton individual y el grupal es una agrupación de distintos botones unidos visualmente.</p>
+          <p>Boton base</p>
+          <p>Group botton</p>
+          <h4 id="list-item-10">Carousel</h4>
+          <p>El Carousel es una presentación de diapositivas para recorrer una serie de contenido, creado con transformaciones CSS 3D y un poco de JavaScript. Funciona con una serie de imágenes, texto o marcas personalizadas. También incluye soporte para controles e indicadores anteriores/siguientes.</p>
+          <h4 id="list-item-11">Spinner</h4>
+          <p>Los “spinners” de Bootstrap se pueden usar para mostrar el estado de carga en tus proyectos. Están construidos solo con HTML y CSS, lo que significa que no necesitas JavaScript para crearlos, pero si para alternar su visibilidad.</p>
+          <h4 id="list-item-12">NavBar</h4>
+          <p> La navBar de Bootstrap es una barra de navegación adaptable y fluida de forma predeterminada, lo que significa que se amplía o reduce en función de la anchura del viewport.</p>
+          <h4 id="list-item-13">Modal</h4>
+          <p>Un cuadro modal es una ventana que aparece superpuesta a toda la página actual. Se utiliza para agregar cuadros de diálogo a tu sitio web, ya sea para lightboxes, notificaciones al usuario o contenido completamente personalizado.</p>
+          <p>Para cerrarla podemos presionar la "x", disponer un botón de cerrado o presionar en cualquier parte fuera del diálogo. Solo se puede tener una ventana modal a la vez, eso significa que desde una ventana modal no se puede disparar otra.
+          Los cuadros de diálogo que implementa Bootstrap 4 requieren de las librerías de Javascript, por lo tanto no debemos olvidar de importarlas.</p>
+          <h4 id="list-item-14">Inputs</h4>
+          <p>Bootstrap proporciona clases y componentes que puedes usar para crear formularios de carga de archivos (inputs para subir archivos) de manera fácil y con estilo. Uno de los componentes que puedes utilizar es el elemento "&lt;input type="file>" junto con algunas clases de Bootstrap para personalizar su apariencia.</p>
+          <h4 id="list-item-15">Plugin Scrollspy</h4>
+          <p>Scrollspy en Bootstrap es una característica que permite seguir automáticamente la posición del usuario en una página web a medida que se desplaza hacia abajo o hacia arriba.</p>
+          <p><strong>¿Cómo funciona Scrollspy?</strong> <br>
+            Scrollspy tiene algunos requisitos para funcionar correctamente:</p>
+            <ul>
+              <li>Debe usarse en un componente de navegación o list group de Bootstrap</li>
+              <li>Scrollspy requiere position: relative; en el elemento que estás espiando, generalmente el &lt;body>.
+              </li>
+              <li>Se requieren enlaces (&lt;a>) y deben apuntar a un elemento con ese id.</li>
+              <li>Cuando se implemente con éxito, tu grupo de navegación o lista se actualizará en consecuencia, moviendo la clase .active de un elemento al siguiente en función de tus objetivos asociados.</li>
+            </ul>
         </div>
       </div>
     </div>
