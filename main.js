@@ -4,6 +4,9 @@ const btn = document.getElementById("btnSend");
 const cardFans = document.getElementById("cardFans")
 
 
+
+
+// ------------------------------------- Álvaro
 const arrayUsers = [];
 
 function saveUsers(e) {
@@ -27,6 +30,8 @@ function saveUsers(e) {
     dataFans.forEach((fan) => cardFans.innerHTML = fan.name);
     
 };
+
+// ----------------------------------------
 
 btn.addEventListener("click", saveUsers) //cambiar boton
 
