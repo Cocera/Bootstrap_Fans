@@ -31,7 +31,7 @@ function saveUsers(e) {
     
 };
 
-btn.addEventListener("click", asasaveUsers) //cambiar boton
+btn.addEventListener("click", saveUsers) //cambiar boton
 
 // ---------------------------------------- Francesc
 
