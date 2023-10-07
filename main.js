@@ -15,11 +15,11 @@ let showUsers = () => {
     arrayUsers.forEach(user => {
         divFans.innerHTML += `
         <div class="col">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card rounded-4 shadow-sm">
+                <img src="https://thispersondoesnotexist.com/" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">${user.name}</h5>
-                <p class="card-text">Mail: ${user.mail}</p>
+                    <h5 class="card-title">${user.name}</h5>
+                    <p class="card-text">Mail: ${user.mail}</p>
                 </div>
             </div>
         </div>`;
