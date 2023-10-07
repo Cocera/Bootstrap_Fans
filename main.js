@@ -12,26 +12,23 @@ const divFans = document.getElementById("divFans")
 const arrayUsers = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
 
 let showUsers = () => {
-    const dataFans = JSON.parse(localStorage.getItem("localStorageUsers"));
-    //dataFans.forEach(user => divFans.innerHTML += `Datos: ${user.name}`)
-    for (let i = 0; i < dataFans.length; i++) {
-        const lista =
-            `<ul>
-                <li> ${dataFans[i].name}  </li>
-                <li> ${dataFans[i].mail} </li>
-            </ul>`;
-        divFans.innerHTML += lista;
-    }
-    
+    arrayUsers.forEach(user => {
+        divFans.innerHTML += `
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+               <h5 class="card-title">${user.name}</h5>
+               <p class="card-text">Mail: ${user.mail}</p>
+            </div>
+        </div>`;
+    });
 };
 
 
 const saveUsers = (e) => {   
     e.preventDefault();
-
     const userRandom = {name: userName.value, mail: userMail.value};
     arrayUsers.push(userRandom);
-    
     localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
     showUsers()
 };
