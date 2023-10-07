@@ -11,12 +11,12 @@ const divFans = document.getElementById("divFans")
 
 const arrayUsers = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
 
-let showUsers = () => {
+const showUsers = () => {
     arrayUsers.forEach(user => {
         divFans.innerHTML += `
         <div class="col">
             <div class="card rounded-4 shadow-sm">
-                <img src="https://thispersondoesnotexist.com/" class="card-img-top" alt="...">
+                <img src="{none}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${user.name}</h5>
                     <p class="card-text">Mail: ${user.mail}</p>
@@ -25,7 +25,6 @@ let showUsers = () => {
         </div>`;
     });
 };
-
 
 const saveUsers = (e) => {   
     e.preventDefault();
