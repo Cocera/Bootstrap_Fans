@@ -1,197 +1,86 @@
-const usuario = document.getElementById("usuario");
-const correo = document.getElementById("correo");
-const btn = document.getElementById("btn");
-const divFans = document.getElementById("divFans")
-const arrayUsers = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
-// ---------------------------------------- Francesc
+function crearUsuario() {
+	const nombre = document.getElementById('nombre').value;
+	const correo = document.getElementById('correo').value;
+	const password = document.getElementById('password').value;
+	const confirmPassword = document.getElementById('confirmPassword').value;
 
-const formulario = document.getElementById('formulario');
-const inputs = document.querySelectorAll('#formulario input');
-
-const avatarProfile = () => {
-	const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png'];
-	let num = Math.floor(Math.random() * arrAvatarProfile.length);
-	let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`;
-	console.log(img);
-	return img;
-};
-
-
-const expresiones = {
-	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	telefono: /^\d{7,14}$/ // 7 a 14 numeros.
-}
-
-const campos = {
-	usuario: false,
-	password: false,
-	correo: false
-
-}
-
-const validarFormulario = (e) => {
-	switch (e.target.name) {
-		case "usuario":
-			validarCampo(expresiones.usuario, e.target, 'usuario');
-		break;
-		case "correo":
-			validarCampo(expresiones.correo, e.target, 'correo');
-		break;
-		case "password":
-			validarCampo(expresiones.password, e.target, 'password');
-			validarPassword2();
-		break;
-		case "password2":
-			validarPassword2();
-		break;
+// Validaciones
+	if (!nombre || !correo || !password || !confirmPassword) {
+		showAlert("Por favor, complete todos los campos.", "danger");
+		return;
 	}
-	
-}
 
-const validarCampo = (expresion, input, campo) => {
-	if(expresion.test(input.value)){
-		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
-		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
-		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
-		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
-		campos[campo] = true;
-	} else {
-		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
-		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
-		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
-		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
-		campos[campo] = false;
+	if (!isValidEmail(correo)) {
+		showAlert("Por favor, ingrese un correo electrónico válido.", "danger");
+		return;
 	}
-}
 
-const validarPassword2 = () => {
-	const inputPassword1 = document.getElementById('password');
-	const inputPassword2 = document.getElementById('password2');
-
-	if(inputPassword1.value !== inputPassword2.value){
-		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
-		document.querySelector(`#grupo__password2 i`).classList.add('fa-times-circle');
-		document.querySelector(`#grupo__password2 i`).classList.remove('fa-check-circle');
-		document.querySelector(`#grupo__password2 .formulario__input-error`).classList.add('formulario__input-error-activo');
-		campos['password'] = false;
-	} else {
-		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-correcto');
-		document.querySelector(`#grupo__password2 i`).classList.remove('fa-times-circle');
-		document.querySelector(`#grupo__password2 i`).classList.add('fa-check-circle');
-		document.querySelector(`#grupo__password2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
-		campos['password'] = true;
+	if (password !== confirmPassword) {
+		showAlert("Las contraseñas no coinciden.", "danger");
+		return;
 	}
+
+	if (password.length < 6) {
+		showAlert("La contraseña debe tener al menos 6 caracteres.", "danger");
+		return;
+	}
+
+// Guardar usuario en localStorage
+	const usuario = { nombre, correo };
+	localStorage.setItem(correo, JSON.stringify(usuario));
+
+// Mostrar mensaje de éxito y redirigir
+	showAlert("Usuario creado correctamente.", "success");
+	setTimeout(function () {
+		document.getElementById('userForm').reset();
+		window.location.href = "/fans.html";
+	}, 3000);
 }
 
-const showUsers = () => {
-	divFans.innerHTML = '';
-	arrayUsers.forEach(user => {
-		divFans.innerHTML += `
-		<div class="col">
-			<div class="card rounded-4 shadow-sm">
-				<img src="${avatarProfile()}" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">${user.name}</h5>
-					<p class="card-text">Mail: ${user.mail}</p>
-				</div>
-			</div>
-		</div>`;
-	});
-};
+// Validación de correo electrónico
+function isValidEmail(email) {
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(email);
+}
 
-const saveUsers = (e) => {
-	e.preventDefault();
-	const userRandom = { name: usuario.value, mail: correo.value };
-	arrayUsers.push(userRandom);
-	localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
-	showUsers();
-}; 
+// Mostrar alerta
+function showAlert(message, type) {
+	const alert = document.getElementById('successAlert');
+	alert.textContent = message;
+	alert.className = `alert alert-${type}`;
+	alert.style.display = 'block';
+	setTimeout(function () {
+		alert.style.display = 'none';
+	}, 3000);
+}
 
-btn?.addEventListener("click", saveUsers);
+// Cargar usuarios al cargar la página
+function loadUsers() {
+	const userCards = document.getElementById('userCards');
+	userCards.innerHTML = '';
+	const avatarImages = [
+        '/assets/avatar_pics/avatar_1.png',
+        '/assets/avatar_pics/avatar_2.png',
+    ];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const usuario = JSON.parse(localStorage.getItem(key));
+        const randomAvatar = avatarImages[Math.floor(Math.random() * avatarImages.length)];
 
-inputs.forEach((input) => {
-	input.addEventListener('keyup', validarFormulario);
-	input.addEventListener('blur', validarFormulario);
-});
-
-showUsers();
-
-formulario.addEventListener("submit", (e) => {
-	e.preventDefault();
-
-	const terminos = document.getElementById('terminos');
-	if(campos.usuario && campos.password && campos.correo && terminos.checked ){
-		formulario.reset();
-
-		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
-		setTimeout(() => {
-			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-			window.location.href = "/fans.html";
-		}, 3000);
-
-		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-            icono.classList.remove('formulario__grupo-correcto');
-        });
-
-        // Ocultar el mensaje de error si está visible
-        document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
-    } else {
-        // Mostrar el mensaje de error si no se cumplen las condiciones
-        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+        const cardHtml = `
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="${randomAvatar}" class="card-img-top" alt="Avatar">
+                    <div class="card-body">
+                        <h5 class="card-title">${usuario.nombre}</h5>
+                        <p class="card-text">${usuario.correo}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        userCards.insertAdjacentHTML('beforeend', cardHtml);
     }
-	
-});
+}
 
-
-// --------------------------------------
-
-
-// ------------------------------------- Álvaro
-
-
-
-// const avatarProfile = () => {
-//     const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png']
-//     let num = Math.floor( Math.random()*arrAvatarProfile.length)
-//     let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`
-//     console.log(img)
-//     return img
-// };
-// const showUsers = () => {
-// 	divFans.innerHTML = '';
-//     arrayUsers.forEach(user => {
-//         divFans.innerHTML += `
-//         <div class="col">
-//             <div class="card rounded-4 shadow-sm">
-//                 <img src="${avatarProfile()}" class="card-img-top" alt="...">
-//                 <div class="card-body">
-//                     <h5 class="card-title">${user.name}</h5>
-//                     <p class="card-text">Mail: ${user.mail}</p>
-//                 </div>
-//             </div>
-//         </div>`;
-        
-//     });
-// };
-
-// const saveUsers = (e) => {   
-//     e.preventDefault();
-//     const userRandom = {name: usuario.value, mail: correo.value};
-//     arrayUsers.push(userRandom);
-//     localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
-//     showUsers()
-// };
-
-// btn?.addEventListener("click", saveUsers);
-
-// showUsers()
-
-
-
+// Cargar usuarios al cargar la página
+loadUsers();
