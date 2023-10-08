@@ -3,6 +3,47 @@
 const btn = document.getElementById("btn");
 const divFans = document.getElementById("divFans")
 
+
+
+// ------------------------------------- Álvaro
+
+const arrayUsers = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
+
+const avatarProfile = () => {
+    const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png']
+    let num = Math.floor( Math.random()*arrAvatarProfile.length)
+    let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`
+    return img
+};
+
+const showUsers = () => {
+    arrayUsers.forEach(user => {
+        divFans.innerHTML += `
+        <div class="col">
+            <div class="card rounded-4 shadow-sm">
+                <img src="${avatarProfile()}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${user.name}</h5>
+                    <p class="card-text">Mail: ${user.mail}</p>
+                </div>
+            </div>
+        </div>`;
+        
+    });
+};
+
+const saveUsers = () => {   
+    const userRandom = {name: usuario.value, mail: correo.value};
+    arrayUsers.push(userRandom);
+    localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
+    showUsers()
+};
+
+
+showUsers()
+
+
+
 // ---------------------------------------- Francesc
 
 const formulario = document.getElementById('formulario');
@@ -85,12 +126,14 @@ inputs.forEach((input) => {
 	input.addEventListener('blur', validarFormulario);
 });
 
-formulario.addEventListener('submit', (e) => {
+formulario?.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	const terminos = document.getElementById('terminos');
 	if(campos.usuario && campos.password && campos.correo && terminos.checked ){
 		formulario.reset();
+
+        saveUsers()
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -110,47 +153,6 @@ formulario.addEventListener('submit', (e) => {
     }
 });
 
-// --------------------------------------
-
-
-// ------------------------------------- Álvaro
-
-const arrayUsers = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
-
-const avatarProfile = () => {
-    const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png']
-    let num = Math.floor( Math.random()*arrAvatarProfile.length)
-    let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`
-    return img
-};
-
-const showUsers = () => {
-    arrayUsers.forEach(user => {
-        divFans.innerHTML += `
-        <div class="col">
-            <div class="card rounded-4 shadow-sm">
-                <img src="${avatarProfile()}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${user.name}</h5>
-                    <p class="card-text">Mail: ${user.mail}</p>
-                </div>
-            </div>
-        </div>`;
-        
-    });
-};
-
-const saveUsers = (e) => {   
-    e.preventDefault();
-    const userRandom = {name: usuario.value, mail: correo.value};
-    arrayUsers.push(userRandom);
-    localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
-    showUsers()
-};
-
-// btn?.addEventListener("click", saveUsers);
-
-showUsers()
 
 
 
