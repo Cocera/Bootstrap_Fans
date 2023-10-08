@@ -1,12 +1,21 @@
-// const userName = document.getElementById("userName");
-// const userMail = document.getElementById("userMail");
+const usuario = document.getElementById("usuario");
+const correo = document.getElementById("correo");
 const btn = document.getElementById("btn");
 const divFans = document.getElementById("divFans")
-
+const arrayUsers = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
 // ---------------------------------------- Francesc
 
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
+
+const avatarProfile = () => {
+	const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png'];
+	let num = Math.floor(Math.random() * arrAvatarProfile.length);
+	let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`;
+	console.log(img);
+	return img;
+};
+
 
 const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -39,6 +48,7 @@ const validarFormulario = (e) => {
 			validarPassword2();
 		break;
 	}
+	
 }
 
 const validarCampo = (expresion, input, campo) => {
@@ -80,12 +90,40 @@ const validarPassword2 = () => {
 	}
 }
 
+const showUsers = () => {
+	divFans.innerHTML = '';
+	arrayUsers.forEach(user => {
+		divFans.innerHTML += `
+		<div class="col">
+			<div class="card rounded-4 shadow-sm">
+				<img src="${avatarProfile()}" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">${user.name}</h5>
+					<p class="card-text">Mail: ${user.mail}</p>
+				</div>
+			</div>
+		</div>`;
+	});
+};
+
+const saveUsers = (e) => {
+	e.preventDefault();
+	const userRandom = { name: usuario.value, mail: correo.value };
+	arrayUsers.push(userRandom);
+	localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
+	showUsers();
+}; 
+
+btn?.addEventListener("click", saveUsers);
+
 inputs.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
 });
 
-formulario.addEventListener('submit', (e) => {
+showUsers();
+
+formulario.addEventListener("submit", (e) => {
 	e.preventDefault();
 
 	const terminos = document.getElementById('terminos');
@@ -108,49 +146,52 @@ formulario.addEventListener('submit', (e) => {
         // Mostrar el mensaje de error si no se cumplen las condiciones
         document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
     }
+	
 });
+
 
 // --------------------------------------
 
 
 // ------------------------------------- Álvaro
 
-const arrayUsers = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
 
-const avatarProfile = () => {
-    const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png']
-    let num = Math.floor( Math.random()*arrAvatarProfile.length)
-    let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`
-    console.log(img)
-    return img
-};
-const showUsers = () => {
-    arrayUsers.forEach(user => {
-        divFans.innerHTML += `
-        <div class="col">
-            <div class="card rounded-4 shadow-sm">
-                <img src="${avatarProfile()}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${user.name}</h5>
-                    <p class="card-text">Mail: ${user.mail}</p>
-                </div>
-            </div>
-        </div>`;
+
+// const avatarProfile = () => {
+//     const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png']
+//     let num = Math.floor( Math.random()*arrAvatarProfile.length)
+//     let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`
+//     console.log(img)
+//     return img
+// };
+// const showUsers = () => {
+// 	divFans.innerHTML = '';
+//     arrayUsers.forEach(user => {
+//         divFans.innerHTML += `
+//         <div class="col">
+//             <div class="card rounded-4 shadow-sm">
+//                 <img src="${avatarProfile()}" class="card-img-top" alt="...">
+//                 <div class="card-body">
+//                     <h5 class="card-title">${user.name}</h5>
+//                     <p class="card-text">Mail: ${user.mail}</p>
+//                 </div>
+//             </div>
+//         </div>`;
         
-    });
-};
+//     });
+// };
 
-const saveUsers = (e) => {   
-    e.preventDefault();
-    const userRandom = {name: usuario.value, mail: correo.value};
-    arrayUsers.push(userRandom);
-    localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
-    showUsers()
-};
+// const saveUsers = (e) => {   
+//     e.preventDefault();
+//     const userRandom = {name: usuario.value, mail: correo.value};
+//     arrayUsers.push(userRandom);
+//     localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
+//     showUsers()
+// };
 
 // btn?.addEventListener("click", saveUsers);
 
-showUsers()
+// showUsers()
 
 
 
