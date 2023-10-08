@@ -18,10 +18,9 @@ const expresiones = {
 
 const campos = {
 	usuario: false,
-	nombre: false,
 	password: false,
-	correo: false,
-	telefono: false
+	correo: false
+
 }
 
 const validarFormulario = (e) => {
@@ -29,8 +28,8 @@ const validarFormulario = (e) => {
 		case "usuario":
 			validarCampo(expresiones.usuario, e.target, 'usuario');
 		break;
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
+		case "correo":
+			validarCampo(expresiones.correo, e.target, 'correo');
 		break;
 		case "password":
 			validarCampo(expresiones.password, e.target, 'password');
@@ -38,12 +37,6 @@ const validarFormulario = (e) => {
 		break;
 		case "password2":
 			validarPassword2();
-		break;
-		case "correo":
-			validarCampo(expresiones.correo, e.target, 'correo');
-		break;
-		case "telefono":
-			validarCampo(expresiones.telefono, e.target, 'telefono');
 		break;
 	}
 }
@@ -96,20 +89,25 @@ formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	const terminos = document.getElementById('terminos');
-	if(campos.usuario && campos.nombre && campos.password && campos.correo && campos.telefono && terminos.checked ){
+	if(campos.usuario && campos.password && campos.correo && terminos.checked ){
 		formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
 			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-		}, 5000);
+			window.location.href = "/fans.html";
+		}, 3000);
 
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-			icono.classList.remove('formulario__grupo-correcto');
-		});
-	} else {
-		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-	}
+            icono.classList.remove('formulario__grupo-correcto');
+        });
+
+        // Ocultar el mensaje de error si está visible
+        document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+    } else {
+        // Mostrar el mensaje de error si no se cumplen las condiciones
+        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+    }
 });
 
 // --------------------------------------
@@ -150,7 +148,7 @@ const saveUsers = (e) => {
     showUsers()
 };
 
-btn?.addEventListener("click", saveUsers);
+// btn?.addEventListener("click", saveUsers);
 
 showUsers()
 
