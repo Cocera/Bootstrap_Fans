@@ -15,9 +15,9 @@ const avatarProfile = () => {
     const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png']
     let num = Math.floor( Math.random()*arrAvatarProfile.length)
     let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`
-    console.log(img)
     return img
 };
+
 const showUsers = () => {
     arrayUsers.forEach(user => {
         divFans.innerHTML += `
