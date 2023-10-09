@@ -1,54 +1,86 @@
-const userName = document.getElementById("userName");
-const userMail = document.getElementById("userMail");
-const pass1 = document.getElementById("inputPass")
-const pass2 = document.getElementById("inputPass2")
-const btn = document.getElementById("btnSend");
-const divFans = document.getElementById("divFans")
+function crearUsuario() {
+	const nombre = document.getElementById('nombre').value;
+	const correo = document.getElementById('correo').value;
+	const password = document.getElementById('password').value;
+	const confirmPassword = document.getElementById('confirmPassword').value;
 
+// Validaciones
+	if (!nombre || !correo || !password || !confirmPassword) {
+		showAlert("Por favor, complete todos los campos.", "danger");
+		return;
+	}
 
+	if (!isValidEmail(correo)) {
+		showAlert("Por favor, ingrese un correo electrónico válido.", "danger");
+		return;
+	}
 
-// ------------------------------------- Álvaro
+	if (password !== confirmPassword) {
+		showAlert("Las contraseñas no coinciden.", "danger");
+		return;
+	}
 
-const arrayUsers = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
+	if (password.length < 6) {
+		showAlert("La contraseña debe tener al menos 6 caracteres.", "danger");
+		return;
+	}
 
-const avatarProfile = () => {
-    const arrAvatarProfile = ['avatar_1.png', 'avatar_2.png']
-    let num = Math.floor( Math.random()*arrAvatarProfile.length)
-    let img = `./assets/avatar_pics/${arrAvatarProfile[num]}`
-    console.log(img)
-    return img
-};
-const showUsers = () => {
-    arrayUsers.forEach(user => {
-        divFans.innerHTML += `
-        <div class="col">
-            <div class="card rounded-4 shadow-sm">
-                <img src="${avatarProfile()}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${user.name}</h5>
-                    <p class="card-text">Mail: ${user.mail}</p>
+// Guardar usuario en localStorage
+	const usuario = { nombre, correo };
+	localStorage.setItem(correo, JSON.stringify(usuario));
+
+// Mostrar mensaje de éxito y redirigir
+	showAlert("Usuario creado correctamente.", "success");
+	setTimeout(function () {
+		document.getElementById('userForm').reset();
+		window.location.href = "/fans.html";
+	}, 3000);
+}
+
+// Validación de correo electrónico
+function isValidEmail(email) {
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(email);
+}
+
+// Mostrar alerta
+function showAlert(message, type) {
+	const alert = document.getElementById('successAlert');
+	alert.textContent = message;
+	alert.className = `alert alert-${type}`;
+	alert.style.display = 'block';
+	setTimeout(function () {
+		alert.style.display = 'none';
+	}, 3000);
+}
+
+// Cargar usuarios al cargar la página
+function loadUsers() {
+	const userCards = document.getElementById('userCards');
+	userCards.innerHTML = '';
+	const avatarImages = [
+        '/assets/avatar_pics/avatar_1.png',
+        '/assets/avatar_pics/avatar_2.png',
+    ];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const usuario = JSON.parse(localStorage.getItem(key));
+        const randomAvatar = avatarImages[Math.floor(Math.random() * avatarImages.length)];
+
+        const cardHtml = `
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="${randomAvatar}" class="card-img-top" alt="Avatar">
+                    <div class="card-body">
+                        <h5 class="card-title">${usuario.nombre}</h5>
+                        <p class="card-text">${usuario.correo}</p>
+                    </div>
                 </div>
             </div>
-        </div>`;
-    });
-};
+        `;
+        userCards.insertAdjacentHTML('beforeend', cardHtml);
+    }
+}
 
-const saveUsers = (e) => {   
-    e.preventDefault();
-    const userRandom = {name: userName.value, mail: userMail.value};
-    arrayUsers.push(userRandom);
-    localStorage.setItem("localStorageUsers", JSON.stringify(arrayUsers));
-    showUsers()
-};
-
-btn?.addEventListener("click", saveUsers);
-
-showUsers()
-
-
-// ---------------------------------------- Francesc
-
-
-
-// -----------------------------------------
-
+// Cargar usuarios al cargar la página
+loadUsers();
