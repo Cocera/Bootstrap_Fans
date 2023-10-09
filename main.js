@@ -66,6 +66,7 @@ function showAlert(message, type) {
 
 
 const loadUsers = () => {
+	const fanCards = document.getElementById("fanCards");
     arrayUsers.forEach(user => {
         fanCards.innerHTML += `
         <div class="col">
