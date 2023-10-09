@@ -1,5 +1,4 @@
 # Exploring and applying Bootstrap
-<strong>Project:</strong> Bootstrap Fans site
 
 ## The team
 Luciana Boasso - <a href="https://github.com/Luboasso">Link to GitHub</a><br>
