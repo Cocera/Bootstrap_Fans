@@ -1,5 +1,7 @@
 const arrayUsers = JSON.parse(localStorage.getItem("users")) || [];
+const btnSend = document.getElementById("btnSend");
 
+// Random avatar img
 const avatarImg = () => {
     const arrAvatarImg = ['avatar_1.png', 'avatar_2.png', 'avatar_3.png', 'avatar_4.png']
     let num = Math.floor( Math.random()*arrAvatarImg.length)
@@ -7,7 +9,8 @@ const avatarImg = () => {
     return img
 };
 
-function crearUsuario() {
+// Upload users data
+const createUser = () => {
 	const nombre = document.getElementById('nombre').value;
 	const correo = document.getElementById('correo').value;
 	const password = document.getElementById('password').value;
@@ -45,16 +48,18 @@ function crearUsuario() {
 		document.getElementById('userForm').reset();
 		window.location.href = "/fans.html";
 	}, 3000);
-}
+
+	loadUsers();
+};
 
 // Validación de correo electrónico
-function isValidEmail(email) {
+const isValidEmail = email => {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	return emailRegex.test(email);
-}
+};
 
 // Mostrar alerta
-function showAlert(message, type) {
+const showAlert = (message, type) => {
 	const alert = document.getElementById('successAlert');
 	alert.textContent = message;
 	alert.className = `alert alert-${type}`;
@@ -62,9 +67,9 @@ function showAlert(message, type) {
 	setTimeout(function () {
 		alert.style.display = 'none';
 	}, 3000);
-}
+};
 
-
+// Mostrar usuarios en fans.html
 const loadUsers = () => {
 	const fanCards = document.getElementById("fanCards");
     arrayUsers.forEach(user => {
@@ -82,30 +87,4 @@ const loadUsers = () => {
 };
 
 loadUsers();
-
-//Get the button
-let mybutton = document.getElementById("btn-back-to-top");
-
-
-window.onscroll = function () {
-  scrollFunction();
-};
-
-function scrollFunction() {
-  if (
-    document.body.scrollTop > 20 ||
-    document.documentElement.scrollTop > 20
-  ) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-
-mybutton.addEventListener("click", backToTop);
-
-function backToTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+btnSend?.addEventListener("click", createUser);
