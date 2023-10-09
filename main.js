@@ -1,3 +1,12 @@
+const arrayUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+const avatarImg = () => {
+    const arrAvatarImg = ['avatar_1.png', 'avatar_2.png', 'avatar_3.png']
+    let num = Math.floor( Math.random()*arrAvatarImg.length)
+    let img = `./assets/avatar_pics/${arrAvatarImg[num]}`
+    return img
+};
+
 function crearUsuario() {
 	const nombre = document.getElementById('nombre').value;
 	const correo = document.getElementById('correo').value;
@@ -26,8 +35,9 @@ function crearUsuario() {
 	}
 
 // Guardar usuario en localStorage
-	const usuario = { nombre, correo };
-	localStorage.setItem(correo, JSON.stringify(usuario));
+	const usuario = {name:nombre, mail:correo, img:avatarImg()};
+    arrayUsers.push(usuario);
+	localStorage.setItem("users", JSON.stringify(arrayUsers));
 
 // Mostrar mensaje de éxito y redirigir
 	showAlert("Usuario creado correctamente.", "success");
@@ -54,33 +64,20 @@ function showAlert(message, type) {
 	}, 3000);
 }
 
-// Cargar usuarios al cargar la página
-function loadUsers() {
-	const userCards = document.getElementById('userCards');
-	userCards.innerHTML = '';
-	const avatarImages = [
-        '/assets/avatar_pics/avatar_1.png',
-        '/assets/avatar_pics/avatar_2.png',
-    ];
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const usuario = JSON.parse(localStorage.getItem(key));
-        const randomAvatar = avatarImages[Math.floor(Math.random() * avatarImages.length)];
 
-        const cardHtml = `
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <img src="${randomAvatar}" class="card-img-top" alt="Avatar">
-                    <div class="card-body">
-                        <h5 class="card-title">${usuario.nombre}</h5>
-                        <p class="card-text">${usuario.correo}</p>
-                    </div>
+const loadUsers = () => {
+    arrayUsers.forEach(user => {
+        fanCards.innerHTML += `
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="${user.img}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${user.name}</h5>
+                    <p class="card-text">Mail: ${user.mail}</p>
                 </div>
             </div>
-        `;
-        userCards.insertAdjacentHTML('beforeend', cardHtml);
-    }
-}
+        </div>`;
+    });
+};
 
-// Cargar usuarios al cargar la página
 loadUsers();
