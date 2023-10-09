@@ -12,7 +12,9 @@ This is a project that aims to get an approach to Bootstrap through a research p
 Bootstrap  /  JavaScript  /  HTML  /  CSS
 
 ## Learnings
-Applied Bootstrap components<br>
-Forms creation<br>
-Validation forms in JavaScript<br>
-Manage LocalStorage data through JavaScript<br>
+<ul>
+<li>Applied Bootstrap components</li>
+<li>Forms creation</li>
+<li>Validation forms in JavaScript</li>
+<li>Manage LocalStorage data through JavaScript</li>
+</ul>
