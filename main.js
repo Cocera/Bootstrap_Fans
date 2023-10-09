@@ -1,7 +1,7 @@
 const arrayUsers = JSON.parse(localStorage.getItem("users")) || [];
 
 const avatarImg = () => {
-    const arrAvatarImg = ['avatar_1.png', 'avatar_2.png', 'avatar_3.png']
+    const arrAvatarImg = ['avatar_1.png', 'avatar_2.png', 'avatar_3.png', 'avatar_4.png']
     let num = Math.floor( Math.random()*arrAvatarImg.length)
     let img = `./assets/avatar_pics/${arrAvatarImg[num]}`
     return img
