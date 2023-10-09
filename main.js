@@ -44,7 +44,7 @@ const createUser = () => {
 
 	// Mostrar mensaje de éxito y redirigir
 	showAlert("Usuario creado correctamente.", "success");
-	setTimeout(function () {
+	setTimeout(() => {
 		document.getElementById('userForm').reset();
 		window.location.href = "/fans.html";
 	}, 3000);
@@ -64,7 +64,7 @@ const showAlert = (message, type) => {
 	alert.textContent = message;
 	alert.className = `alert alert-${type}`;
 	alert.style.display = 'block';
-	setTimeout(function () {
+	setTimeout(() => {
 		alert.style.display = 'none';
 	}, 3000);
 };
@@ -75,16 +75,17 @@ const loadUsers = () => {
     arrayUsers.forEach(user => {
         fanCards.innerHTML += `
         <div class="col">
-            <div class="card shadow-sm">
-                <img src="${user.img}" class="card-img-top" alt="...">
+            <div class="card shadow-sm rounded-4 p-2">
+                <img src="${user.img}" class="card-img-top rounded-4 shadow-sm" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${user.name}</h5>
-                    <p class="card-text">Mail: ${user.mail}</p>
+                    <p class="card-text">${user.mail}</p>
                 </div>
             </div>
         </div>`;
     });
 };
 
-loadUsers();
 btnSend?.addEventListener("click", createUser);
+
+loadUsers();
