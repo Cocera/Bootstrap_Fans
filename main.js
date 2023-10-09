@@ -16,7 +16,7 @@ const createUser = () => {
 	const password = document.getElementById('password').value;
 	const confirmPassword = document.getElementById('confirmPassword').value;
 
-// Validaciones
+	// Validaciones
 	if (!nombre || !correo || !password || !confirmPassword) {
 		showAlert("Por favor, complete todos los campos.", "danger");
 		return;
@@ -37,12 +37,12 @@ const createUser = () => {
 		return;
 	}
 
-// Guardar usuario en localStorage
+	// Guardar usuario en localStorage
 	const usuario = {name:nombre, mail:correo, img:avatarImg()};
     arrayUsers.push(usuario);
 	localStorage.setItem("users", JSON.stringify(arrayUsers));
 
-// Mostrar mensaje de éxito y redirigir
+	// Mostrar mensaje de éxito y redirigir
 	showAlert("Usuario creado correctamente.", "success");
 	setTimeout(function () {
 		document.getElementById('userForm').reset();
