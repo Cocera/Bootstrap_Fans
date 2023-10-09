@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Bootstrap Fans</title>
 </head>
-<body>
+<body id="formBody">
     
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -33,29 +33,29 @@
 
   <main class="p-5">
     
-    <section id="crearUsuario" class="container p-5 w-50">
-      <h2>Crear Usuario</h2>
+    <section id="crearUsuario" class="container w-50">
+      <h1 class="p-5 text-center">Crear usuario</h1>
       <div class="alert alert-success" id="successAlert" style="display: none;">
           Usuario creado correctamente.
       </div>
       <form id="userForm">
-          <div class="form-group">
+          <div class="form-group pb-3">
               <label for="nombre">Nombre</label>
               <input type="text" class="form-control" id="nombre" required>
           </div>
-          <div class="form-group">
+          <div class="form-group pb-3">
               <label for="correo">Correo</label>
               <input type="email" class="form-control" id="correo" required>
           </div>
-          <div class="form-group">
+          <div class="form-group pb-3">
               <label for="password">Contraseña</label>
               <input type="password" class="form-control" id="password" required>
           </div>
-          <div class="form-group">
+          <div class="form-group pb-3">
               <label for="confirmPassword">Repite Contraseña</label>
               <input type="password" class="form-control" id="confirmPassword" required>
           </div>
-          <button type="button" class="btn btn-primary" id="btnSend">Crear Usuario</button>
+          <button type="button" class="btn btn-light" id="btnSend">Crear Usuario</button>
       </form>
   </section>
 </main>

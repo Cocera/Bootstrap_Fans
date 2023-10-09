@@ -45,8 +45,8 @@ const createUser = () => {
 	// Mostrar mensaje de éxito y redirigir
 	showAlert("Usuario creado correctamente.", "success");
 	setTimeout(() => {
+		window.location.href = "./fans.html";
 		document.getElementById('userForm').reset();
-		window.location.href = "/fans.html";
 	}, 3000);
 
 	loadUsers();

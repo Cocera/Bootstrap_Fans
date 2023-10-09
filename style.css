@@ -1,13 +1,37 @@
 
 :root {
-    --color1: #EF0000;
-    --color2: #FFEC44;
-    --color3: #008AEE;
+    --color1: #6B34F1;
+    --color2: #E1D4FF;
 }
 
 body { 
-  background-color: rgb(220 195 255);
+  background-color: var(--color2);
 }
+
+h1 {
+  color: var(--color1);
+}
+
+#navbarNav>ul>li>a {
+  color: var(--color1);
+  margin-left: 1vw;
+}
+
+#userForm>div>label {
+  color: var(--color1);
+}
+
+body#formBody {
+  background-color: #119200;
+}
+
+
+
+
+
+
+
+
 
 .formulario {
   display: grid;
@@ -62,9 +86,6 @@ body {
   opacity: 0;
 }
 
-.formulario__checkbox {
-  margin-right: 10px;
-}
 
 .formulario__grupo-terminos,
 .formulario__mensaje,
@@ -105,10 +126,6 @@ body {
   border-radius: 3px;
   cursor: pointer;
   transition: .1s ease all;
-}
-
-.formulario__btn:hover {
-  box-shadow: 3px 0px 20px rgb(136, 136, 136);
 }
 
 .formulario__mensaje-exito {
