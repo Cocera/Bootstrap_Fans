@@ -1,7 +1,6 @@
 const arrayUsers = JSON.parse(localStorage.getItem("users")) || [];
 const btnSend = document.getElementById("btnSend");
 
-// Random avatar img
 const avatarImg = () => {
     const arrAvatarImg = ['avatar_1.png', 'avatar_2.png', 'avatar_3.png', 'avatar_4.png']
     let num = Math.floor( Math.random()*arrAvatarImg.length)
@@ -9,14 +8,12 @@ const avatarImg = () => {
     return img
 };
 
-// Upload users data
 const createUser = () => {
 	const nombre = document.getElementById('nombre').value;
 	const correo = document.getElementById('correo').value;
 	const password = document.getElementById('password').value;
 	const confirmPassword = document.getElementById('confirmPassword').value;
 
-	// Validaciones
 	if (!nombre || !correo || !password || !confirmPassword) {
 		showAlert("Por favor, complete todos los campos.", "danger");
 		return;
@@ -37,12 +34,10 @@ const createUser = () => {
 		return;
 	}
 
-	// Guardar usuario en localStorage
 	const usuario = {name:nombre, mail:correo, img:avatarImg()};
     arrayUsers.push(usuario);
 	localStorage.setItem("users", JSON.stringify(arrayUsers));
 
-	// Mostrar mensaje de éxito y redirigir
 	showAlert("Usuario creado correctamente.", "success");
 	setTimeout(() => {
 		window.location.href = "./fans.html";
@@ -52,13 +47,11 @@ const createUser = () => {
 	loadUsers();
 };
 
-// Validación de correo electrónico
 const isValidEmail = email => {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	return emailRegex.test(email);
 };
 
-// Mostrar alerta
 const showAlert = (message, type) => {
 	const alert = document.getElementById('successAlert');
 	alert.textContent = message;
@@ -69,7 +62,6 @@ const showAlert = (message, type) => {
 	}, 3000);
 };
 
-// Mostrar usuarios en fans.html
 const loadUsers = () => {
 	const fanCards = document.getElementById("fanCards");
     arrayUsers.forEach(user => {
@@ -78,7 +70,7 @@ const loadUsers = () => {
             <div class="card shadow-sm rounded-4 p-2">
                 <img src="${user.img}" class="card-img-top rounded-4 shadow-sm" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">${user.name}</h5>
+                    <h4 class="card-title">${user.name}</h4>
                     <p class="card-text">${user.mail}</p>
                 </div>
             </div>
