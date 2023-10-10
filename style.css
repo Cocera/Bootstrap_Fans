@@ -26,6 +26,11 @@ body.formBody {
   background-image: url("./assets/background.png");
 }
 
+div#list-example>a {
+  --bs-list-group-active-bg: #6B34F1;
+  --bs-list-group-active-border-color: #6B34F1;
+}
+
 
 
 
