@@ -1,13 +1,6 @@
 const arrayUsers = JSON.parse(localStorage.getItem("users")) || [];
 const btnSend = document.getElementById("btnSend");
 
-const avatarImg = () => {
-    const arrAvatarImg = ['avatar_1.png', 'avatar_2.png', 'avatar_3.png', 'avatar_4.png']
-    let num = Math.floor( Math.random()*arrAvatarImg.length)
-    let img = `./assets/avatar_pics/${arrAvatarImg[num]}`
-    return img
-};
-
 const createUser = () => {
 	const nombre = document.getElementById('nombre').value;
 	const correo = document.getElementById('correo').value;
@@ -33,6 +26,13 @@ const createUser = () => {
 		showAlert("La contraseña debe tener al menos 6 caracteres.", "danger");
 		return;
 	}
+
+	const avatarImg = () => {
+		const arrAvatarImg = ['avatar_1.png', 'avatar_2.png', 'avatar_3.png', 'avatar_4.png']
+		let num = Math.floor( Math.random()*arrAvatarImg.length)
+		let img = `./assets/avatar_pics/${arrAvatarImg[num]}`
+		return img
+	};
 
 	const usuario = {name:nombre, mail:correo, img:avatarImg()};
     arrayUsers.push(usuario);
